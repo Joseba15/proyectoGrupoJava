@@ -42,13 +42,13 @@ public class Alumno {
 
 	@Override
 	public boolean equals(Object obj) {
-		boolean sonIguales=true;
+		boolean sonIguales=false;
 		if (obj !=null) {
-			 sonIguales=true;
-		}else {
+			
 			Alumno other = (Alumno) obj;
 			sonIguales=this.dni.equalsIgnoreCase(other.getDni());
 		}
+		
 	
 		return sonIguales;
 	}
