@@ -43,17 +43,16 @@ class EquipoTest {
 		try {
 			
 			Equipo equipoA = new Equipo();
-			Alumno alumno = new Alumno("Jose", "54756847W");
 			equipoA.addAlumno("Jose", "54756847W");
 			equipoA.addAlumno("Jose", "54756847W");
 
+			assert(false);
 		}catch(AlumnoException e){
 			
-			assert(false);
+			assert(true);
 		}
 		
-
-
 	}
+	
 
 }

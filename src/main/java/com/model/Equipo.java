@@ -39,13 +39,13 @@ public class Equipo {
 		Alumno al = new Alumno(nombre, dni);
 		
 		boolean resultado = false;
-				if (listaAlumno.contains(al)) {
-					throw new AlumnoException();
-				}else {
+		if (listaAlumno.contains(al)) {
+			throw new AlumnoException("El alumno ya existe");
+		}else {
 					
-					listaAlumno.add(al);
-					resultado = true;
-				}
+			listaAlumno.add(al);
+			resultado = true;
+		}
 		return resultado;
 		
 	}
