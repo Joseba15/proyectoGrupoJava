@@ -55,6 +55,10 @@ public class Equipo {
 	public List<Alumno> getListaAlumno() {
 		return listaAlumno;
 	}
+	
+	public void MostrarListaAlumnos() {
+		System.out.println(listaAlumno);
+	}
 
 
 	@Override
