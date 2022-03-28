@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import main.java.com.model.Alumno;
+import main.java.com.model.AlumnoException;
 import main.java.com.model.Equipo;
 
 class EquipoTest {
@@ -12,15 +14,46 @@ class EquipoTest {
 	void testEquipoVacioAlPrincipio() {
 		
 		Equipo equipoA = new Equipo();
-		assertEquals(equipoA.getAlumnos().size, 0);
+		assertEquals(equipoA.getListaAlumno().size(), 0);
 	}
 	
-//	@Test
-//	void testAddAlumnoAtributosAumentaTamanio() {
-//		
-//		Equipo equipoA = new Equipo();
-//		equipoA.addAlumno("Jose", "54756847W")
-//
-//	}
+	@Test
+	void testAddAlumnoAtributosAumentaTamanio() {
+		
+		Equipo equipoA = new Equipo();
+		equipoA.addAlumno("Jose", "54756847W");
+		
+		assertEquals(equipoA.getListaAlumno().size(), 1);
+
+	}
+	
+	@Test
+	void testAddAlumnoClaseAumentaTamanio() {
+		Equipo equipoA = new Equipo();
+		Alumno alumno = new Alumno("Jose", "54756847W");
+		equipoA.addAlumno(alumno);
+		
+		assertEquals(equipoA.getListaAlumno().size(), 1);
+
+		
+	}
+	
+	@Test
+	void lanzoExceptionConAlumnoRepetido() {
+		try {
+			
+			Equipo equipoA = new Equipo();
+			Alumno alumno = new Alumno("Jose", "54756847W");
+			equipoA.addAlumno("Jose", "54756847W");
+			equipoA.addAlumno("Jose", "54756847W");
+
+		}catch(AlumnoException e){
+			
+			assert(false);
+		}
+		
+
+
+	}
 
 }

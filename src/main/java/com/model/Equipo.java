@@ -11,6 +11,8 @@ public class Equipo {
 	private List<Alumno> listaAlumno= new ArrayList<Alumno>();
 	
 	
+
+
 	public Equipo() {}
 
 
@@ -23,8 +25,7 @@ public class Equipo {
 	public boolean addAlumno (Alumno alumn) {
 		boolean resultado = false;
 		if (listaAlumno.contains(alumn)) {
-			//throw new Exception();
-			resultado = false;
+			throw new AlumnoException("El alumno ya existe");
 		}else {
 			
 			listaAlumno.add(alumn);
@@ -54,6 +55,9 @@ public class Equipo {
 	}
 	
 	
+	public List<Alumno> getListaAlumno() {
+		return listaAlumno;
+	}
 
 
 	@Override
@@ -67,24 +71,4 @@ public class Equipo {
 	}
 
 	
-	/*
-	 * Metodo que se usará en los tests 
-	 */
-	public static List<Alumno> generarLista () {
-		
-		List<Alumno> listaAlumnos = new ArrayList<Alumno>();
-		
-		listaAlumnos.add(new Alumno("Hermenegildo", "21454718Z"));
-		listaAlumnos.add(new Alumno("Jose", "77484741A"));
-		listaAlumnos.add(new Alumno("Joseba", "66582487F"));
-		listaAlumnos.add(new Alumno("Antonio", "47154221D"));
-		listaAlumnos.add(new Alumno("Pilar", "47412548J"));
-		listaAlumnos.add(new Alumno("Vicente", "74586318P"));
-		listaAlumnos.add(new Alumno("Alejandra", "65899856T"));		
-		
-		
-		return listaAlumnos;
-		
-		
-	}
 }
