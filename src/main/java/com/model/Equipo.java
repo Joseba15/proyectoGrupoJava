@@ -40,8 +40,7 @@ public class Equipo {
 		
 		boolean resultado = false;
 				if (listaAlumno.contains(al)) {
-					//throw new Exception();
-					resultado = false;
+					throw new AlumnoException();
 				}else {
 					
 					listaAlumno.add(al);
@@ -49,10 +48,8 @@ public class Equipo {
 				}
 		return resultado;
 		
-	
-		
-		
 	}
+	
 	
 	
 	public List<Alumno> getListaAlumno() {
