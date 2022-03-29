@@ -54,5 +54,31 @@ class EquipoTest {
 		
 	}
 	
+	@Test
+	void testDeleteAlumnoAtributosDisminuyeTamanio() {
+		
+		Equipo equipoA = new Equipo();
+		Alumno al1=new Alumno("Antonio","2222323123w");
+		equipoA.addAlumno(al1);
+		equipoA.borrarAlumnoConDniyNombre("Antonio","2222323123w");
+		
+		assertEquals(equipoA.getListaAlumno().size(), 0);
+
+	}
+	
+	@Test
+	void testDeleteAlumnoClaseDisminuyeTamanio() {
+		Equipo equipoA = new Equipo();
+		Alumno alumno = new Alumno("Jose", "54756847W");
+		equipoA.addAlumno(alumno);
+		equipoA.borrarAlumno(alumno);
+		
+		
+		assertEquals(equipoA.getListaAlumno().size(), 0);
+		
+	
+	
+	}
+	
 
 }
