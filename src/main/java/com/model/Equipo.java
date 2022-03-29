@@ -2,7 +2,9 @@ package main.java.com.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Equipo {
@@ -47,6 +49,40 @@ public class Equipo {
 			resultado = true;
 		}
 		return resultado;
+		
+	}
+	public boolean borrarAlumno(Alumno alumnoNuevo) {
+		boolean existeAlumno=false;
+		if(listaAlumno.contains(alumnoNuevo)) {
+			listaAlumno.remove(alumnoNuevo);
+			existeAlumno=true;
+		}else {
+			throw new AlumnoException("El alumno no existe");
+		}
+		
+		return existeAlumno;
+	}
+	
+	public boolean borrarAlumnoConDniyNombre(String nombre, String dni) {
+		boolean existeAlumno=false;
+		Alumno al1=new Alumno(nombre,dni);
+		if(listaAlumno.contains(al1)) {
+			listaAlumno.remove(al1);
+			existeAlumno=true;
+		}else {
+			throw new AlumnoException("El alumno no existe");
+		}
+		
+		return existeAlumno;
+	}
+	
+	public Set<Alumno> unirmeEquipos(List<Alumno> grupoUnido){
+		
+		Set<Alumno> conjuntoNuevo=new HashSet<Alumno>();
+		conjuntoNuevo.addAll(listaAlumno);
+		conjuntoNuevo.addAll(grupoUnido);
+		return conjuntoNuevo;
+		
 		
 	}
 	
