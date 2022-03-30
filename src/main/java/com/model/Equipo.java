@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Set;
 
 
-public class Equipo {
+public class Equipo<T> {
 
 	private String nombre;
-	private List<Alumno> listaAlumno= new ArrayList<Alumno>();
+	private List<T> listaAlumno= new ArrayList<T>();
 	
 	
 
@@ -18,13 +18,13 @@ public class Equipo {
 	public Equipo() {}
 
 
-	public Equipo(String nombre, List<Alumno> listaAlumno) {
+	public Equipo(String nombre, List<T> listaAlumno) {
 		this.nombre = nombre;
 		this.listaAlumno = listaAlumno;
 	}
 	
 	
-	public boolean addAlumno (Alumno alumn) {
+	public boolean addAlumno (T alumn) {
 		boolean resultado = false;
 		if (listaAlumno.contains(alumn)) {
 			throw new AlumnoException("El alumno ya existe");
@@ -45,13 +45,13 @@ public class Equipo {
 			throw new AlumnoException("El alumno ya existe");
 		}else {
 					
-			listaAlumno.add(al);
+			listaAlumno.add((T) al);
 			resultado = true;
 		}
 		return resultado;
 		
 	}
-	public boolean borrarAlumno(Alumno alumnoNuevo) {
+	public boolean borrarAlumno(T alumnoNuevo) {
 		boolean existeAlumno=false;
 		if(listaAlumno.contains(alumnoNuevo)) {
 			listaAlumno.remove(alumnoNuevo);
@@ -66,8 +66,8 @@ public class Equipo {
 	public boolean borrarAlumnoConDniyNombre(String nombre, String dni) {
 		boolean existeAlumno=false;
 		Alumno al1=new Alumno(nombre,dni);
-		if(listaAlumno.contains(al1)) {
-			listaAlumno.remove(al1);
+		if(listaAlumno.contains((T)al1)) {
+			listaAlumno.remove((T)al1);
 			existeAlumno=true;
 		}else {
 			throw new AlumnoException("El alumno no existe");
@@ -76,17 +76,17 @@ public class Equipo {
 		return existeAlumno;
 	}
 	
-	public Set<Alumno> unirmeEquipos(List<Alumno> grupoUnido){
+	public Set<T> unirmeEquipos(T equipoB){
 		
-		Set<Alumno> conjuntoNuevo=new HashSet<Alumno>();
+		Set<T> conjuntoNuevo=new HashSet<T>();
 		conjuntoNuevo.addAll(listaAlumno);
-		conjuntoNuevo.addAll(grupoUnido);
+		conjuntoNuevo.add(equipoB);
 		return conjuntoNuevo;
 		
 		
 	}
 	
-	public Alumno comprobarAlumno (Alumno al) {
+	public T comprobarAlumno (T al) {
 		if (!listaAlumno.contains(al)) {
 			al=null;
 		}	
@@ -94,7 +94,7 @@ public class Equipo {
 	}
 	
 	public Equipo interseccionEquipos (Equipo otroEquipo) {
-		 List<Alumno> listaConjunta=new ArrayList<Alumno>();
+		 List<T> listaConjunta=new ArrayList<T>();
 		 
 		for (int i = 0; i < this.listaAlumno.size(); i++) {
 			if (otroEquipo.getListaAlumno().contains(this.listaAlumno.get(i))) {
@@ -108,7 +108,7 @@ public class Equipo {
 	
 	
 	
-	public List<Alumno> getListaAlumno() {
+	public List<T> getListaAlumno() {
 		return listaAlumno;
 	}
 	
