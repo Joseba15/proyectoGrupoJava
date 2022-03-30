@@ -80,5 +80,55 @@ class EquipoTest {
 	
 	}
 	
+	@Test
+	void testSiEstaAlumnoEnLista() {
+		Equipo equipo=new Equipo();
+		Alumno al1 = new Alumno("Joseba","28896792Z");
+		equipo.getListaAlumno().add(al1);
+		
+		assertEquals(equipo.comprobarAlumno(al1),al1);
+	}
+	
+	@Test
+	void testNoEstaAlumnoEnLista() {
+		Equipo equipo=new Equipo();
+		Alumno al1 = new Alumno("Joseba","28896792Z");
+		
+		
+		assertEquals(equipo.comprobarAlumno(al1),null);
+	}
+	
+	@Test
+	void testHayAlumnoEnInterseccion() {
+		Equipo equipo1=new Equipo();
+		Equipo equipo2=new Equipo();
+		Alumno al1 = new Alumno("Joseba","28896792Z");
+		Alumno al2 = new Alumno("Manuel","54896787M");
+		equipo1.getListaAlumno().add(al1);
+		equipo1.getListaAlumno().add(al2);
+		equipo2.getListaAlumno().add(al1);
+
+		Equipo equipo3= equipo1.interseccionEquipos(equipo2);
+		
+		
+		assertEquals(equipo3.getListaAlumno().size(),1);
+		assertEquals(equipo3.getListaAlumno().get(0), al1);
+	}
+
+	@Test
+	void testNoHayAlumnoEnInterseccion() {
+		Equipo equipo1=new Equipo();
+		Equipo equipo2=new Equipo();
+		Alumno al1 = new Alumno("Joseba","28896792Z");
+		Alumno al2 = new Alumno("Manuel","54896787M");
+		equipo1.getListaAlumno().add(al1);
+		equipo2.getListaAlumno().add(al2);
+
+		Equipo equipo3= equipo1.interseccionEquipos(equipo2);
+		
+		
+		assertEquals(equipo3.getListaAlumno().size(),0);
+	}
+	
 
 }

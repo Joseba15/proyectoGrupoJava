@@ -86,6 +86,26 @@ public class Equipo {
 		
 	}
 	
+	public Alumno comprobarAlumno (Alumno al) {
+		if (!listaAlumno.contains(al)) {
+			al=null;
+		}	
+		return al;
+	}
+	
+	public Equipo interseccionEquipos (Equipo otroEquipo) {
+		 List<Alumno> listaConjunta=new ArrayList<Alumno>();
+		 
+		for (int i = 0; i < this.listaAlumno.size(); i++) {
+			if (otroEquipo.getListaAlumno().contains(this.listaAlumno.get(i))) {
+				listaConjunta.add(this.listaAlumno.get(i));
+			}
+		}
+		Equipo equipoInter = new Equipo("equipoInter",listaConjunta);
+		
+		return equipoInter ;
+	}
+	
 	
 	
 	public List<Alumno> getListaAlumno() {
